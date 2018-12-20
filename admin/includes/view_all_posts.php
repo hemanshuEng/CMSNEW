@@ -21,7 +21,7 @@
                         <th>Date</th>
                         <th>image</th>
                         <th>Content</th>
-                        <th width = '%3'>Tags</th>
+                        <th >Tags</th>
                         <th>Comments</th>
                     </tr>
                     </thead>

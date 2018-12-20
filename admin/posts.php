@@ -45,8 +45,8 @@
                     case 'add_post':
                         include "includes/add_posts.php";
                         break;
-                    case '45':
-                        echo 'nice 45';
+                    case 'edit_post':
+                        echo 'includes/edit_post.php';
                         break;
 
                     default : 
