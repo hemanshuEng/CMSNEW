@@ -140,16 +140,24 @@
                         <a href="categories.php"><i class="fa fa-fw fa-desktop"></i>Categories</a>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Comments</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Comments <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="comments.php">View all comments</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="comments.php?source=add_comment">Add comment</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="user" class="collapse">
+                            <li>
+                                <a href="comments.php">View all Users</a>
+                            </li>
+                            <li>
+                                <a href="comments.php?source=add_comment">Add User</a>
                             </li>
                         </ul>
                     </li>

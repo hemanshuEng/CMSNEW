@@ -28,8 +28,23 @@ if(isset($_POST['add'])){
               <input type="text" name="post_title" id="" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
             <div class="form-group">
-              <label for="post_category">Post Category Id</label>
-              <input type="text" name="post_category_id" id="" class="form-control" placeholder="" aria-describedby="helpId">
+              <label for="post_category_id">Post category</label>
+              <select class="form-control" name="post_category_id" id="exampleFromcontrolSelect1">
+              <?php
+                                $query = "SELECT * FROM categories";
+                                $result = mysqli_query($connection,$query);
+                                confirmQuery($result);
+                                        while($cat_row = mysqli_fetch_assoc($result)){
+                                        $ID =$cat_row['cat_id'];
+                                        $title =$cat_row['cat_title'];
+               ?>
+                <option value="<?php echo $ID ?>"><?php echo $title ?></option>
+               <?php
+                                        }
+                ?>
+                
+        
+              </select>
             </div>
             <div class="form-group">
               <label for="Author">Post Author</label>
@@ -49,7 +64,7 @@ if(isset($_POST['add'])){
             </div>
             <div class="form-group">
               <label for="post_content">Post Content</label>
-              <textarea type="text" name="post_content" id="" class="form-control" cols='30'$_POSTs ='10' placeholder="" aria-describedby="helpId">
+              <textarea type="text" name="post_content" id="" class="form-control" cols='50' rows ='10' placeholder="" aria-describedby="helpId">
               </textarea>
             </div>  
            <button name ="add" type="submit" class="btn btn-primary">add post</button>
