@@ -5,8 +5,9 @@ if(isset($_POST['add'])){
     $user_lastname =$_POST['user_lastname'];
     $user_date =date('d-m-y');
     $user_email =$_POST['user_email'];
+    $user_password =$_POST['user_password'];
     $user_role =$_POST['user_role'];
-    $query = "INSERT INTO user (user_name,user_firstname,user_lastname,user_email,user_role,user_date) VALUES ('{$user_name}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_role}',now())";
+    $query = "INSERT INTO user (user_name,user_firstname,user_lastname,user_email,user_role,user_password,user_date) VALUES ('{$user_name}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_role}','{$user_password}',now())";
    
     $create_post_query = mysqli_query($connection,$query);
     if(!$create_post_query){
@@ -36,6 +37,10 @@ if(isset($_POST['add'])){
       <label for="user_email">Email</label>
       <input type="email" class="form-control" name="user_email" id="" aria-describedby="emailHelpId" placeholder="">
       
+    </div>
+    <div class="form-group">
+      <label for="user_password">Password</label>
+      <input type="password" class="form-control" name="user_password" id="" placeholder="">
     </div>
     <div class="form-group">
         <label for="user_role">User role</label>

@@ -18,7 +18,8 @@
     $user_date =date('d-m-y');
     $user_email =$_POST['user_email'];
     $user_role =$_POST['user_role'];
-    $query = "UPDATE user SET user_name='$user_name', user_firstname ='$user_firstname',user_lastname='$user_lastname',user_date=now(), user_email='$user_email',user_role ='$user_role' WHERE user_id = '$edit_id'";
+    $user_password =$_POST['user_password'];
+    $query = "UPDATE user SET user_name='$user_name', user_firstname ='$user_firstname',user_lastname='$user_lastname',user_date=now(), user_email='$user_email',user_role ='$user_role',user_password='$user_password' WHERE user_id = '$edit_id'";
     $create_post_query = mysqli_query($connection,$query);
     if(!$create_post_query){
         die("queryfailed".mysqli_error());
@@ -54,6 +55,10 @@
     <div class="form-group">
       <label for="user_email">Email</label>
       <input type="email" class="form-control" name="user_email" value ="<?php if(isset($row['user_email'])){echo $row['user_email'];}  ?>"id="" aria-describedby="emailHelpId" placeholder=""> 
+    </div>
+    <div class="form-group">
+      <label for="user_password">Password</label>
+      <input type="password" class="form-control" name="user_password" value ="<?php if(isset($row['user_password'])){echo $row['user_password'];}  ?> id="" placeholder="">
     </div>
     <div class="form-group">
         <label for="user_role">User role</label>

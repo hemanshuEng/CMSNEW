@@ -1,34 +1,29 @@
-<?php ob_start();?>
-<?php include "../includes/db.php"?> 
-
-<!DOCTYPE html>
-<html lang="en">
 <?php include "includes/header.php"?>
 
 <body>
 
-<div id="wrapper">
+    <div id="wrapper">
         <?php include "includes/navigation.php"?>
         <div id="page-wrapper">
 
-        <div class="container-fluid">
+            <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                   Welcome to Admin
-                    <small>Categories</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
-                <?php
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Welcome to Admin
+                            <small><?php echo $_SESSION['firstname'];?></small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Blank Page
+                            </li>
+                        </ol>
+                        <?php
                 if(isset($_POST['submit'])){
                     $cat_title =$_POST['cat_title'];
                     if($cat_title==""|| empty($cat_title)){
@@ -42,21 +37,22 @@
                     }
                 }
                 ?>
-                <div class = "col-xs-3">
-                <form action="" method ="post">
-                    <div class="form-group">
-                      <label for="cat_title">Add Category</label>
-                      <input type="text" name="cat_title" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                      <small id="helpId" class="text-muted">Categories</small>
-                    </div>
-                    <button type="submit" name='submit' class="btn btn-primary">Add category</button>
-                
-                </form>
-                
-                <form action="" method ="post">
-                    <div class="form-group">
-                      <label for="cat_title">Edit</label>
-                        <?php
+                        <div class="col-xs-3">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="cat_title">Add Category</label>
+                                    <input type="text" name="cat_title" id="" class="form-control" placeholder=""
+                                        aria-describedby="helpId">
+                                    <small id="helpId" class="text-muted">Categories</small>
+                                </div>
+                                <button type="submit" name='submit' class="btn btn-primary">Add category</button>
+
+                            </form>
+
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="cat_title">Edit</label>
+                                    <?php
                         if(isset($_GET['edit'])){
                           $cat_id =$_GET['edit'];
                           $query = "SELECT * FROM categories WHERE cat_id =$cat_id";
@@ -68,19 +64,20 @@
                                   echo "<tr>";
                                   $ID =$row['cat_id'];
                                   $title =$row['cat_title'];
-                        ?>       
-                                  <input type="text" value ="<?php if(isset($title)){echo $title;}  ?>" name="cat_title" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                                 
-                        <?php
+                        ?>
+                                    <input type="text" value="<?php if(isset($title)){echo $title;}  ?>" name="cat_title"
+                                        id="" class="form-control" placeholder="" aria-describedby="helpId">
+
+                                    <?php
                                   }  
                             }
                         ?>
-                       
-                     
-                      <small id="helpId" class="text-muted">Categories</small>
-                    </div>
-                    <button type="submit" name='update' class="btn btn-primary">update</button>
-                     <?php
+
+
+                                    <small id="helpId" class="text-muted">Categories</small>
+                                </div>
+                                <button type="submit" name='update' class="btn btn-primary">update</button>
+                                <?php
                         if(isset($_GET['edit'])){
                             $cat_id = $_GET['edit'];
                         
@@ -99,18 +96,18 @@
                     } 
                 }
                     ?>
-                </form>
-                </div>
-                <div class="col-xs-6">
-                       <table class="table table-bordered table-hover">
-                           <thead>
-                               <tr>
-                                   <th>ID</th>
-                                   <th>Title</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                            <?php
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                 $query = "SELECT * FROM categories";
                                 $result = mysqli_query($connection,$query);
                                      if(!$result){
@@ -131,7 +128,7 @@
                              ?>
 
 
-                             <?php 
+                                    <?php 
 
                              if(isset($_GET['delete'])){
                                  $cat_id = $_GET['delete'];
@@ -141,24 +138,24 @@
                              }
 
                              ?>
-                          
-                           </tbody>
-                       </table>
-                
-                
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        </div>
-        <!-- /.container-fluid -->
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
 
 
-</div>
+    </div>
     <!-- /#wrapper -->
 
     <?php include "includes/footer.php"?>

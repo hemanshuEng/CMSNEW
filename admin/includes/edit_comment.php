@@ -11,21 +11,21 @@
 
 ?>
  <?php
- if(isset($_POST['edit'])){   
-    $comment_post_id =$_POST['comment_post_id'];
-    $comment_author =$_POST  ['comment_author'];
-    $comment_email =$_POST['comment_email'];
-    $comment_date =date('d-m-y');
-    $comment_content =$_POST['comment_content'];
-    $comment_status =$_POST['comment_status'];
-    $query = "UPDATE comment SET comment_post_id='$comment_post_id', comment_author ='$comment_author',comment_email='$comment_email',comment_date=now(), comment_content='$comment_content',comment_status ='$comment_status' WHERE comment_id = '$edit_id'";
-    $create_post_query = mysqli_query($connection,$query);
-    if(!$create_post_query){
-        die("queryfailed".mysqli_error());
-        }
-        header('Location: comments.php');
+if (isset($_POST['edit'])) {
+  $comment_post_id = $_POST['comment_post_id'];
+  $comment_author = $_POST['comment_author'];
+  $comment_email = $_POST['comment_email'];
+  $comment_date = date('d-m-y');
+  $comment_content = $_POST['comment_content'];
+  $comment_status = $_POST['comment_status'];
+  $query = "UPDATE comment SET comment_post_id='$comment_post_id', comment_author ='$comment_author',comment_email='$comment_email',comment_date=now(), comment_content='$comment_content',comment_status ='$comment_status' WHERE comment_id = '$edit_id'";
+  $create_post_query = mysqli_query($connection, $query);
+  if (!$create_post_query) {
+    die("queryfailed" . mysqli_error());
+  }
+  header('Location: comments.php');
 }
- 
+
 
 ?>
       
@@ -40,19 +40,19 @@
               <label for="comment_post_id">Post Title</label>
               <select class="form-control" name="comment_post_id" id="exampleFromcontrolSelect1">
               <?php
-                                $query = "SELECT * FROM posts";
-                                $result = mysqli_query($connection,$query);
-                                confirmQuery($result);
-                                        while($cat_row = mysqli_fetch_assoc($result)){
-                                        $ID =$cat_row['post_id'];
-                                        $title =$cat_row['post_title'];
-                                        if($row['comment_post_id']==$ID){
-                                            echo "<option value= $ID selected>$title</option>";
-                                        } else{ 
-                                        echo "<option value= $ID >$title</option>";
-                                        }
-                                        }
-                ?>
+              $query = "SELECT * FROM posts";
+              $result = mysqli_query($connection, $query);
+              confirmQuery($result);
+              while ($cat_row = mysqli_fetch_assoc($result)) {
+                $ID = $cat_row['post_id'];
+                $title = $cat_row['post_title'];
+                if ($row['comment_post_id'] == $ID) {
+                  echo "<option value= $ID selected>$title</option>";
+                } else {
+                  echo "<option value= $ID >$title</option>";
+                }
+              }
+              ?>
                 
         
               </select>

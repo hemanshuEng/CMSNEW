@@ -1,69 +1,64 @@
-<?php ob_start();?>
-<?php include "../includes/db.php"?> 
-<?php include "includes/function.php"?>
-
-<!DOCTYPE html>
-<html lang="en">
 <?php include "includes/header.php"?>
 
 <body>
 
-<div id="wrapper">
+    <div id="wrapper">
         <?php include "includes/navigation.php"?>
         <div id="page-wrapper">
 
-        <div class="container-fluid">
+            <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                   Welcome to Admin
-                    <small>Posts</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> View all Posts
-                    </li>
-                </ol>
-                
-        </div>
-        <!-- /.row -->
-        <!-- switch statement -->
-        <?php
-         if(isset($_GET['source'])){
-            $source = $_GET['source'];
-         }else{
-            $source ="";
-         }
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Welcome to Admin
+                            <small><?php echo $_SESSION['firstname'];?></small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> View all Posts
+                            </li>
+                        </ol>
 
-            switch($source){
+                    </div>
+                    <!-- /.row -->
+                    <!-- switch statement -->
+                    <?php
+                    if (isset($_GET['source'])) {
+                        $source = $_GET['source'];
+                    } else {
+                        $source = "";
+                    }
 
-                    case 'add_comment':
-                        include "includes/add_comment.php";
-                        break;
-                    case 'edit_comment':
-                        include 'includes/edit_comment.php';
-                        break;
+                    switch ($source) {
 
-                    default : 
-                        include "includes/view_all_comments.php";
-                        break;
-            }
+                        case 'add_comment':
+                            include "includes/add_comment.php";
+                            break;
+                        case 'edit_comment':
+                            include 'includes/edit_comment.php';
+                            break;
+
+                        default:
+                            include "includes/view_all_comments.php";
+                            break;
+                    }
 
 
-        ?>
-        </div>
-        <!-- /.container-fluid -->
+                    ?>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
 
 
-</div>
+    </div>
     <!-- /#wrapper -->
 
     <?php include "includes/footer.php"?>
