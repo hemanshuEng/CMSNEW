@@ -21,7 +21,7 @@
                         <th>Date</th>
                         <th>image</th>
                         <th>Content</th>
-                        <th width = '%3'>Tags</th>
+                        <th >Tags</th>
                         <th>Comments</th>
                     </tr>
                     </thead>
@@ -47,14 +47,17 @@
                                 echo "<td scope ='row'>$ID</td>";
                                 echo  "<td>$post_title</td>";
                                 echo  "<td>$post_author</td>";
-                                echo  "<td>$post_cat_ID</td>";
+                                $cat_query ="SELECT * FROM categories WHERE cat_id =$post_cat_ID";
+                                $cat_result=mysqli_query($connection,$cat_query);
+                                $cat_row =mysqli_fetch_assoc($cat_result);
+                                echo  "<td>{$cat_row['cat_title']}</td>";
                                 echo  "<td>$post_date</td>";
                                 echo   "<td><img width = '100' src ='../image/$post_image' alt = '$post_image'></td>";
                                 echo  "<td>$post_content</td>";
                                 echo  "<td width = '%3'>$post_tags</td>";
                                 echo  "<td>$post_commnets</td>";
                                 echo  "<td><a href=?delete={$ID}>Delete</a></td>";
-                                echo  "<td><a href=?edit={$ID}>Edit</a></td>";
+                                echo  "<td><a href=?source=edit_post&edit={$ID}>Edit</a></td>";
                                 echo "</tr>";
                                  }
 
